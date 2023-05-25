@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        tools:context=".MainActivity">
+
+        <com.dgqstudio.dropdown.Dropdown
+            android:id="@+id/example1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dropdownTitle="Dropdown example"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is a simple example showing a dropdown text" />
+
+        </com.dgqstudio.dropdown.Dropdown>
+
+        <com.dgqstudio.dropdown.Dropdown
+            android:id="@+id/example2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:dropdownTitle="Dropdown example"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/example1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This is a simple example showing a dropdown text with an image" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/image1" />
+
+            </LinearLayout>
+
+        </com.dgqstudio.dropdown.Dropdown>
+
+        <com.dgqstudio.dropdown.Dropdown
+            android:id="@+id/example3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:dropdownTitle="Dropdown example"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/example2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This is a simple example showing a dropdown text with an image gallery." />
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:columnCount="3">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image1" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image1" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image1" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image1" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image1" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/image1" />
+
+                </androidx.gridlayout.widget.GridLayout>
+
+            </LinearLayout>
+
+        </com.dgqstudio.dropdown.Dropdown>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

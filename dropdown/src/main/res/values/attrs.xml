@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Dropdown">
+
+        <attr name="dropdownCollapsedByDefault" format="boolean" />
+
+        <attr name="dropdownTitle" format="string" />
+        <attr name="dropdownTitleStyle" format="reference" />
+        <attr name="dropdownButtonTint" format="color|reference" />
+        <attr name="dropdownExpandedButtonSrc" format="reference" />
+        <attr name="dropdownCollapsedButtonSrc" format="reference" />
+        <attr name="dropdownShowDivider" format="boolean" />
+
+        <attr name="headerPadding" format="dimension" />
+        <attr name="headerTopPadding" format="dimension" />
+        <attr name="headerStartPadding" format="dimension" />
+        <attr name="headerEndPadding" format="dimension" />
+        <attr name="headerBottomPadding" format="dimension" />
+        <attr name="headerBackgroundColor" format="color|reference" />
+
+        <attr name="contentPadding" format="dimension" />
+        <attr name="contentTopPadding" format="dimension" />
+        <attr name="contentStartPadding" format="dimension" />
+        <attr name="contentEndPadding" format="dimension" />
+        <attr name="contentBottomPadding" format="dimension" />
+        <attr name="contentBackgroundColor" format="color|reference" />
+
+    </declare-styleable>
+
+</resources>
