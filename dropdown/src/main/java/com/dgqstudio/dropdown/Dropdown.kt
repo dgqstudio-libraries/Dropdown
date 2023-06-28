@@ -61,6 +61,7 @@ class Dropdown @JvmOverloads constructor(
     // Variables
     private var isContentVisible = true
     private var dropdownContentHeight: Int = 0
+    private var animationRunning: Boolean = false
 
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -287,60 +288,72 @@ class Dropdown @JvmOverloads constructor(
     }
 
     private fun toggleContentVisibility() {
-        val animationDuration: Long = 600
+        if (!animationRunning) {
+            val animationDuration: Long = 600
 
-        if (isContentVisible) {
-            isContentVisible = false
+            if (isContentVisible) {
+                isContentVisible = false
 
-            dropdownContentHeight = dropdownContent.height
+                dropdownContentHeight = dropdownContent.height
 
-            val animator = ValueAnimator.ofInt(dropdownContentHeight, 0)
-            animator.duration = animationDuration
-            animator.interpolator = AccelerateInterpolator(1.3f)
+                val animator = ValueAnimator.ofInt(dropdownContentHeight, 0)
+                animator.duration = animationDuration
+                animator.interpolator = AccelerateInterpolator(1.3f)
 
-            animator.addUpdateListener { animation ->
-                val animatedValue = animation.animatedValue as Int
+                animator.addUpdateListener { animation ->
+                    val animatedValue = animation.animatedValue as Int
 
-                val layoutParams = dropdownContent.layoutParams
-                layoutParams.height = animatedValue
-                dropdownContent.layoutParams = layoutParams
+                    val layoutParams = dropdownContent.layoutParams
+                    layoutParams.height = animatedValue
+                    dropdownContent.layoutParams = layoutParams
 
-                dropdownContent.requestLayout()
-            }
-
-            animator.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    setDropdownButtonSrc()
-                    dropdownContent.visibility = View.GONE
+                    dropdownContent.requestLayout()
                 }
-            })
 
-            animator.start()
-        } else {
-            isContentVisible = true
+                animator.addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationStart(animation: Animator) {
+                        animationRunning = true
+                    }
 
-            val animator = ValueAnimator.ofInt(0, dropdownContentHeight)
-            animator.duration = animationDuration
-            animator.interpolator = AccelerateInterpolator(1.3f)
+                    override fun onAnimationEnd(animation: Animator) {
+                        setDropdownButtonSrc()
+                        dropdownContent.visibility = View.GONE
+                        animationRunning = false
+                    }
+                })
 
-            animator.addUpdateListener { animation ->
-                val animatedValue = animation.animatedValue as Int
+                animator.start()
+            } else {
+                isContentVisible = true
 
-                val layoutParams = dropdownContent.layoutParams
-                layoutParams.height = animatedValue
-                dropdownContent.layoutParams = layoutParams
+                val animator = ValueAnimator.ofInt(0, dropdownContentHeight)
+                animator.duration = animationDuration
+                animator.interpolator = AccelerateInterpolator(1.3f)
 
-                dropdownContent.requestLayout()
-            }
+                animator.addUpdateListener { animation ->
+                    val animatedValue = animation.animatedValue as Int
 
-            animator.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationStart(animation: Animator) {
-                    setDropdownButtonSrc()
-                    dropdownContent.visibility = View.VISIBLE
+                    val layoutParams = dropdownContent.layoutParams
+                    layoutParams.height = animatedValue
+                    dropdownContent.layoutParams = layoutParams
+
+                    dropdownContent.requestLayout()
                 }
-            })
 
-            animator.start()
+                animator.addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationStart(animation: Animator) {
+                        setDropdownButtonSrc()
+                        dropdownContent.visibility = View.VISIBLE
+                        animationRunning = true
+                    }
+
+                    override fun onAnimationEnd(animation: Animator) {
+                        animationRunning = false
+                    }
+                })
+
+                animator.start()
+            }
         }
     }
 
